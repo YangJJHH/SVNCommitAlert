@@ -64,7 +64,8 @@ def monitor_svn(repo_path, interval=60):
     print("SVN 연결성공. 대기중...")
     while True:
         new_revision = get_latest_revision(repo_path)
-        print(f"최신 리비전 : {new_revision}")
+        checktime = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+        print(f"최신 리비전 : {new_revision} - {checktime}")
         if new_revision is None:
             continue
 
@@ -89,6 +90,6 @@ if __name__ == "__main__":
     except Exception as e:
         print(f"프로그램 실행 중 오류가 발생했습니다: {e}")
         input("오류가 발생했습니다. 종료하려면 Enter 키를 누르세요...")
-
+    print("종료")
 # pip로 설치한 패키지 모든 종속성 포함한 실행파일 추출
 # pyinstaller --onefile --hidden-import=plyer.platforms.win.notification --hidden-import=plyer.platforms.win --hidden-import=plyer.platforms CommitAlert.py
